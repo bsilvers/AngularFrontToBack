@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { User } from '../../models/User';
 
 @Component ({
     selector: 'app-user',
@@ -6,43 +7,26 @@ import { Component } from '@angular/core';
     styleUrls: ['./user.component.css']    
 })
 
-export class UserComponent {
-    firstName: string;
-    lastName: string;
-    age: number;
-    address;
-    hasKids: boolean;
-    foo: any;
-    numberArray: number[];
-    stringArray: string[];
-
-    myTuple: [string, number, boolean];
-    unusable: void;
-    u: undefined;
-    n: null;
+export class UserComponent implements OnInit {
+    user: User;
 
     // Methods
     constructor() {
-       this.firstName = 'John';
-       this.lastName = 'Doe';
-       this.age = 30;
-
-       this.address =  {
-        street: '50 Main street',
-        city: 'Boston',
-        state: 'MA'
+        
     }
-        this.foo = true;
-        this.hasKids = true;
-        this.numberArray = [1,2,3];
-        this.stringArray = ['Hello', 'World']
-        this.myTuple = ['hello', 1 , true];
-        this.unusable = undefined;
-        this.u = undefined;
-        this.n = null;
+
+    ngOnInit() {
+        this.user = {
+            firstName: 'John',
+            lastName:  'Doe',
+            age: 30,
+            address: {
+                street: '50 Main St.',
+                city: 'Boston',
+                state: 'MA'
+            }
+        }
     }
     
-    showAge() {
-        return this.age;
-    }
 }
+
