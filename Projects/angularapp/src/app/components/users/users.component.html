@@ -5,7 +5,7 @@
     <h3 >
       {{ user.firstName }}
       {{ user.lastName }}
-      <small><button class="btn btn-dark btn-sm" (click)="toggleHide(user)">Toggle</button></small>
+      <small *ngIf="user.age && user.address"><button class="btn btn-dark btn-sm" (click)="toggleHide(user)"><i [ngClass]="user.hide ? 'fa fa-plus' : 'fa fa-minus'"></i></button></small>
     </h3>
     <ul class="list-group" *ngIf="!user.hide && user.age && user.address">
       <li class="list-group-item">Age: {{ user.age }}</li>
