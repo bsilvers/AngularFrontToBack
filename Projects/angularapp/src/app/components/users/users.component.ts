@@ -10,7 +10,7 @@ export class UsersComponent implements OnInit {
   users: User[];
   showExtended: boolean = true;
   loaded: boolean = false;
-
+  enableAdd: boolean = true;
   constructor() { }
 
   ngOnInit() {
@@ -25,7 +25,8 @@ export class UsersComponent implements OnInit {
               street: '50 Main St.',
               city: 'Boston',
               state: 'MA'
-          }
+          },
+          image: 'http://lorempixel.com/600/600/people/3'
       },
       {
         firstName: 'Kevin',
@@ -35,7 +36,8 @@ export class UsersComponent implements OnInit {
             street: '20 School St.',
             city: 'Lynn',
             state: 'MA'
-        }
+        },
+        image: 'http://lorempixel.com/600/600/people/2'
     },
     {
       firstName: 'Karen',
@@ -45,7 +47,8 @@ export class UsersComponent implements OnInit {
           street: '55 Mill St.',
           city: 'Miami',
           state: 'FL'
-      }
+      },
+      image: 'http://lorempixel.com/600/600/people/1'
   }
       ];
       this.loaded = true;
@@ -55,16 +58,16 @@ export class UsersComponent implements OnInit {
     
    // this.showExtended = false;
 
-    this.addUser({
-      firstName: 'David',
-      lastName:  'Jackson' //,
-      // age: 44,
-      // address: {
-      //     street: '12 Wake St.',
-      //     city: 'Miami',
-      //     state: 'FL'
-     // }
-    });
+    // this.addUser({
+    //   firstName: 'David',
+    //   lastName:  'Jackson' //,
+    //   // age: 44,
+    //   // address: {
+    //   //     street: '12 Wake St.',
+    //   //     city: 'Miami',
+    //   //     state: 'FL'
+    //  // }
+    // });
 
   }
 
