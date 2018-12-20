@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from 'src/app/models/user';
 
 @Component({
@@ -10,12 +10,7 @@ export class UsersComponent implements OnInit {
   user: User = {
     firstName: '',
     lastName: '',
-    age: null,
-    address: {
-      street: '',
-      city: '',
-      state: ''
-    }
+    email: ''
 
   }
   users: User[];
@@ -23,6 +18,7 @@ export class UsersComponent implements OnInit {
   loaded: boolean = false;
   enableAdd: boolean = false;
   showUserForm: boolean = false;
+  @ViewChild('userform') form: any;
 
   constructor() { }
 
@@ -33,12 +29,7 @@ export class UsersComponent implements OnInit {
       {
         firstName: 'John',
         lastName: 'Doe',
-        age: 70,
-        address: {
-          street: '50 Main St.',
-          city: 'Boston',
-          state: 'MA'
-        },
+        email: 'john@gmail.com',
         isActive: true,
         registered: new Date('01/02/2018 08:30:00'),
         hide: true
@@ -46,12 +37,7 @@ export class UsersComponent implements OnInit {
       {
         firstName: 'Kevin',
         lastName: 'Neelin',
-        age: 34,
-        address: {
-          street: '20 School St.',
-          city: 'Lynn',
-          state: 'MA'
-        },
+        email: 'kevin@gmail.com',
         isActive: false,
         registered: new Date('03/11/2017 06:30:00'),
         hide: true
@@ -59,12 +45,7 @@ export class UsersComponent implements OnInit {
       {
         firstName: 'Karen',
         lastName: 'Williams',
-        age: 26,
-        address: {
-          street: '55 Mill St.',
-          city: 'Miami',
-          state: 'FL'
-        },
+        email: 'karen@gmail.com',
         isActive: true,
         registered: new Date('11/02/2016 10:30:00'),
         hide: true
@@ -73,33 +54,26 @@ export class UsersComponent implements OnInit {
     this.loaded = true;
   }
 
-  addUser() {
-    this.user.isActive = true;
-    this.user.registered = new Date();
-    this.users.unshift(this.user);
-    this.user = {
-      firstName: '',
-    lastName: '',
-    age: null,
-    address: {
-      street: '',
-      city: '',
-      state: ''
-    }
-    };
-  }
 
+  
   toggleHide(user: User){    
     user.hide = !user.hide;
   }
   
-  onSubmit(e){
-    console.log(e);
-    e.preventDefault();
+  onSubmit({value, valid}: {value: User, valid: boolean}) {
+    if(!valid){
+      console.log('Form is not valid.');
+    } else {
+      value.isActive = true;
+      value.registered = new Date();
+      value.hide = true;
+      this.users.unshift(value);
+
+      this.form.reset();
+    }
+
+    
   }
 
-  fireEvent(e){
-    console.log(e.type);
-    console.log(e.target.value);
-  }
+ 
 }
