@@ -25,9 +25,7 @@ export class LogFormComponent implements OnInit {
           this.text = log.text;
           this.date = log.date;
         }
-        // else {
-        //   this.isNew = true;
-        // }
+       
       });
   }
 
@@ -51,6 +49,16 @@ export class LogFormComponent implements OnInit {
       }
       this.logService.updateLog(updLog);
     }
+
+    this.clearState();
+  }
+
+  clearState() {
+    this.isNew = true;
+    this.id = '';
+    this.text = '';
+    this.date = '';
+    this.logService.clearState();
   }
 
    generateId() {
