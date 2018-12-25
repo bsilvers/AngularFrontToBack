@@ -34,8 +34,6 @@ export class UsersComponent implements OnInit {
     });   
     
   }
-
-
   
   toggleHide(user: User){    
     user.hide = !user.hide;
