@@ -9,6 +9,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { AppRoutingModule } from './app-routing.module';
+import { AuthService}  from './services/auth.service';
+import { ClientService}  from './services/client.service';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -45,8 +47,9 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     AngularFireAuthModule,
     FormsModule,
     FlashMessagesModule.forRoot()
+    
   ],
-  providers: [],
+  providers: [ClientService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
