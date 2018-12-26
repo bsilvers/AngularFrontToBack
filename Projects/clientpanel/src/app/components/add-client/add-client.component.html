@@ -89,7 +89,6 @@
                      name="balance" 
                      class="form-control"
                      #clientBalance="ngModel"
-                     [ngClass]="{'is-invalid': clientBalance.errors && clientBalance.touched}"
                      [(ngModel)]="balance"
                      [disabled]="disableBalanceOnAdd"
                      >
