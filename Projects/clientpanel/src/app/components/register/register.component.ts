@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
       });
       this.router.navigate(['/']);
     })
-    .catcH(err => {
+    .catch(err => {
       this.flashMessage.show(err.message, {
         cssClass: 'alert-danger', timeout: 4000
       });
