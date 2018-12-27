@@ -4,13 +4,21 @@ import { Settings } from '../models/Settings';
 @Injectable()
 export class SettingsService {
   settings: Settings = {
-    allowRegistration: false,
+    allowRegistration: true,
     disableBalanceOnAdd: true,
     disableBalanceOnEdit: true
   }
-  constructor() { }
+  constructor() {
+    if (localStorage.getItem('settings') != null) {
+      this.settings = JSON.parse(localStorage.getItem('settings'));
+    }
+  }
 
-  getSettings() : Settings {
+  getSettings(): Settings {
     return this.settings;
+  }
+
+  changeSettings(settings: Settings) {
+    localStorage.setItem('settings', JSON.stringify(settings));
   }
 }
